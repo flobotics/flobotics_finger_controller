@@ -13,8 +13,8 @@
 #include <std_msgs/Float32MultiArray.h>
 #include <std_msgs/Int16MultiArray.h>
 
-int val_windup = 450;
-int val_wind   = 350;
+int val_windup = 410;//450;
+int val_wind   = 390;//350;
 int val_windstop = 400;  
 
 /**
