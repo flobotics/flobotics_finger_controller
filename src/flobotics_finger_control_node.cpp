@@ -1,7 +1,7 @@
 #include "ros/ros.h"
 #include <std_msgs/Int8.h>
 //#include "serial/serial.h"
-#include <flobotics_finger_messages/flobotics_finger_force_adc_values.h>
+//#include <flobotics_finger_messages/flobotics_finger_force_adc_values.h>
 #include <flobotics_finger_messages/flobotics_finger_force_limit_values.h>
 #include <flobotics_finger_messages/flobotics_finger_control_values.h>
 #include <flobotics_finger_messages/flobotics_finger_servo_control_values.h>
@@ -154,7 +154,6 @@ int main(int argc, char **argv)
 
 
 
-
   ros::spin();
 
   return 0;
@@ -244,8 +243,8 @@ void stop_drawback(){
 
 }
 
-void distal_drawback(){
 
+void proximal_1_drawback(){
 	std_msgs::Int16MultiArray msg;
 	msg.data.clear();
 
@@ -273,8 +272,9 @@ void distal_drawback(){
   servo_pub.publish(msg);
 }
 
-void intermediate_drawback(){
-  
+
+void proximal_2_drawback(){  
+
   std_msgs::Int16MultiArray msg;
   msg.data.clear();
 
@@ -303,7 +303,7 @@ void intermediate_drawback(){
   servo_pub.publish(msg);
 }
 
-void proximal_2_drawback(){
+void intermediate_drawback(){
   
   std_msgs::Int16MultiArray msg;
   msg.data.clear();
@@ -335,7 +335,7 @@ void proximal_2_drawback(){
   servo_pub.publish(msg);
 }
 
-void proximal_1_drawback(){
+void distal_drawback(){
   
   std_msgs::Int16MultiArray msg;
   msg.data.clear();
