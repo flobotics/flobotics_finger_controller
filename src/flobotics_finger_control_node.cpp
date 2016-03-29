@@ -22,15 +22,17 @@ int val_windstop = 400;
  */
 void flobotics_finger_force_callback(const std_msgs::Float32MultiArray& msg)
 {
-  //ROS_INFO("I heard adc0: [%d], adc1: [%d], adc2: [%d], adc3: [%d], adc4: [%d], adc5: [%d], adc6: [%d], adc7: [%d]", msg.adc0, msg.adc1, msg.adc2, msg.adc3, msg.adc4, msg.adc5, msg.adc6, msg.adc7);
-  adc0 = (1100 / 5) * msg.data[0];
-  adc1 = (1100 / 5) * msg.data[1];
-  adc2 = (1100 / 5) * msg.data[2];
-  adc3 = (1100 / 5) * msg.data[3];
-  adc4 = (1100 / 5) * msg.data[4];
-  adc5 = (1100 / 5) * msg.data[5];
-  adc6 = (1100 / 5) * msg.data[6];
-  adc7 = (1100 / 5) * msg.data[7];
+
+//	ROS_INFO("ADC------->%f<---------ADC", msg.data[0]);
+  
+  adc0 = (1100.0 / 5.0) * msg.data[0];
+  adc1 = (1100.0 / 5.0) * msg.data[1];
+  adc2 = (1100.0 / 5.0) * msg.data[2];
+  adc3 = (1100.0 / 5.0) * msg.data[3];
+  adc4 = (1100.0 / 5.0) * msg.data[4];
+  adc5 = (1100.0 / 5.0) * msg.data[5];
+  adc6 = (1100.0 / 5.0) * msg.data[6];
+  adc7 = (1100.0 / 5.0) * msg.data[7];
 }
 
 /*
@@ -93,7 +95,7 @@ int main(int argc, char **argv)
   ros::NodeHandle nh_sub_to_force_limits;
 
 
-  ros::Subscriber sub = nh_sub_force.subscribe("adc_pi_plus_sub", 1000, flobotics_finger_force_callback);
+  ros::Subscriber sub = nh_sub_force.subscribe("adc_pi_plus_pub", 1000, flobotics_finger_force_callback);
   ros::Subscriber subToControl = nh_sub_to_finger_control.subscribe("flobotics_finger_force_limit_values", 1000, flobotics_finger_force_limit_values_callback);
   ros::Subscriber subToLimits = nh_sub_to_force_limits.subscribe("flobotics_finger_control", 1000, flobotics_finger_control_callback);
 
@@ -247,6 +249,7 @@ void stop_drawback(){
 void proximal_1_drawback(){
 	std_msgs::Int16MultiArray msg;
 	msg.data.clear();
+
 
   if(adc0 < proximal_limit_min_1)
     msg.data.push_back(val_wind); //do winding
