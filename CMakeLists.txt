@@ -108,7 +108,7 @@ add_executable(flobotics_finger_controller_node src/flobotics_finger_control_nod
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-add_dependencies(flobotics_finger_controller_node flobotics_finger_controller_generate_messages_cpp)
+add_dependencies(flobotics_finger_controller_node flobotics_finger_messages_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(flobotics_finger_controller_node
