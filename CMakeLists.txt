@@ -7,6 +7,7 @@ project(flobotics_finger_controller)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rviz
+  flobotics_finger_messages
 )
 
 ## System dependencies are found with CMake's conventions
